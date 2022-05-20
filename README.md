@@ -1,2 +1,2 @@
 # rviz
-Data visualizations with R
+Data visualizations using R (and ggplot 🤩)
