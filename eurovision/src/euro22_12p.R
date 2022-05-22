@@ -2,13 +2,15 @@ library(tidyverse)
 library(ggalluvial)
 library(showtext)
 
+here::i_am('euro22_12p.R')
+
 # Init theme --------------------------------------------------------------
 showtext_auto()
 font_add_google('Bitter')
 theme_set(theme_minimal(base_family = 'Bitter'))
 
 # Load data ---------------------------------------------------------------
-df <- read_csv(here::here('eurovision/data/eurovision-votes.csv')) %>%
+df <- read_csv(here::here('../data/eurovision-votes.csv')) %>%
   filter(
     year == 2022,
     points == 12,
