@@ -30,7 +30,6 @@ df %>%
     geom_col(position = position_dodge2()) +
     geom_text(aes(label = scales::percent(prob)), position = position_dodge2(0.9), vjust = 1.4, size = 3.2, color = 'white') +
     scale_y_continuous(labels = scales::percent) +
-    #viridis::scale_fill_viridis(option = 'inferno', discrete = T) +
     scale_fill_discrete(type = viridis::plasma(4, begin = .20, end = .80)) +
     lemon::facet_rep_wrap(~team, repeat.tick.labels = 'bottom') +
     labs(
