@@ -5,3 +5,4 @@
 .here
 .DS_Store
 *-checkpoint.ipynb
+.ipynb_checkpoints/
