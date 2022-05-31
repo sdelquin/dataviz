@@ -62,7 +62,11 @@ plot <- function(data, fecha) {
       family = 'zilla', nudge_x = -0.45, fontface = 'bold', size = 4.5
     ) +
     scale_x_continuous(breaks = 1:max(data$hoyo), expand = c(0, 0.5)) +
-    scale_y_continuous(breaks = breaks_width(1), expand = c(0, 0)) +
+    scale_y_continuous(
+      trans = 'reverse',
+      breaks = seq(floor(max(data$ratio)), floor(min(data$ratio)), -1),
+      expand = c(0, 0)
+    ) +
     scale_color_manual(values = c(COLOR_LUCIA, COLOR_SERGIO)) +
     scale_fill_manual(values = c(COLOR_LUCIA, COLOR_SERGIO), drop = F) +
     coord_cartesian(clip = 'off') +
@@ -94,8 +98,10 @@ plot <- function(data, fecha) {
   ggsave(glue('../plots/minigolf_{fecha}.jpg'), width = 12, height = 8)
 }
 
+# Just for testing purposes
 df %>%
-  filter(fecha == '2022-05-21') %>%
+  # filter(fecha == '2022-05-21') %>%
+  filter(fecha == '2018-07-24') %>%
   plot(fecha = .$fecha)
 
 df %>%
