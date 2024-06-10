@@ -9,6 +9,12 @@ TITLE_FONT <- 'Cubano'
 df <- read_csv('../data/educannews.csv', col_types = '?i') |>
   mutate(fecha = parse_date(fecha, '%d/%m/%Y'))
 
+milestones <- tribble(
+  ~fecha, ~suscriptores, ~etiqueta,
+  dmy(210723), 3200, "Lanzamiento de\noferta de plazas",
+  dmy(271123), 4050, "Lanzamiento de\nnombramientos diarios"
+)
+
 df |>
   ggplot(aes(x = fecha, y = suscriptores)) +
   geom_line(color = 'red', size = 1) +
@@ -33,8 +39,8 @@ df |>
   ) +
   geom_area(fill = 'red', alpha = 0.1) +
   geom_text_repel(
-    data = data.frame(fecha = dmy(210723), suscriptores = 3200),
-    label = 'Lanzamiento de\nofertas de nombramientos',
+    data = milestones,
+    aes(x = fecha, y = suscriptores, label = etiqueta),
     point.padding = 1,
     nudge_x = -300,
     nudge_y = 500,
@@ -51,7 +57,7 @@ df |>
   labs(
     title = "Canal Telegram Novedades Consejería de Educación (GOBCAN) [No oficial]",
     subtitle = "Evolución de suscriptores/as (@educannews)",
-    caption = "Elaborado por @sdelquin | Origen de datos: Seguimiento individual"
+    caption = "© sdelquin | Origen de datos: Seguimiento individual"
   ) +
   theme_bw() +
   theme(
@@ -66,3 +72,4 @@ df |>
     axis.text.y = element_blank()
   )
 
+rstudioapi::savePlotAsImage("../plots/suscriptorxs.png", width = 1200, height = 698)
