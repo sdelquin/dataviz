@@ -12,7 +12,8 @@ df <- read_csv('../data/educannews.csv', col_types = '?i') |>
 milestones <- tribble(
   ~fecha, ~suscriptores, ~etiqueta,
   dmy(210723), 3200, "Lanzamiento de\noferta de plazas",
-  dmy(271123), 4050, "Lanzamiento de\nnombramientos diarios"
+  dmy(271123), 4050, "Lanzamiento de\nnombramientos diarios",
+  dmy(270625), 7700, "Lanzamiento de\nresultados oposiciones"
 )
 
 df |>
